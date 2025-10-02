@@ -114,7 +114,14 @@ def rag_respond(message, hf_token, history, system_message, max_tokens, temperat
         history_text += f"Previous Q: {q}\nPrevious A: {a}\n"
 
     # FAISS retrieval
-    retrieval_query = " ".join([f"{q} {a}" for q, a in history[-3:]] + [message])
+    # history[-3:] was used for multi turn questions such as: where did apollo 11 go to?, then 
+    # who was went there? chat_history fed into retrieval_query is necessary to be able to have this
+    # functionality. 
+    # however when switching topics, will have irrelevant retrieval chunks from previous topic relative
+    # to the new topic and the LLM will then say I don't know.
+    # can instead use history[-2:] to use less of the past chat_history while maintaining
+    # multi turn follow up questions feature
+    retrieval_query = " ".join([f"{q} {a}" for q, a in history[-2:]] + [message])
     q_emb = embedder.encode([retrieval_query], convert_to_numpy=True)
     D, I = index.search(q_emb, k=5)
     retrieved_chunks = [(corpus[i], sources[i], D[0][j]) for j, i in enumerate(I[0])]
