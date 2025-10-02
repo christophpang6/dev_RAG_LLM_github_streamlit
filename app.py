@@ -71,6 +71,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# making it very simple for someone to start to interact
 st.markdown("### Try clicking on one of these:")
 
 col1, col2, col3 = st.columns(3)
