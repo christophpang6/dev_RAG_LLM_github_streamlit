@@ -72,18 +72,15 @@ st.markdown("### 💡 Try asking one of these:")
 col1, col2, col3 = st.columns(3)
 with col1:
     if st.button("🚀 Apollo 11 crew"):
-        st.session_state["user_input"] = "Who were the crew members of Apollo 11?"
-        st.session_state["trigger_chat"] = True
+        st.session_state["trigger_chat"] = "Who were the crew members of Apollo 11?"
 
 with col2:
     if st.button("🗼 Eiffel Tower year"):
-        st.session_state["user_input"] = "When was the Eiffel Tower built?"
-        st.session_state["trigger_chat"] = True
+        st.session_state["trigger_chat"] = "When was the Eiffel Tower built?"
 
 with col3:
     if st.button("💻 Python origin"):
-        st.session_state["user_input"] = "Who created Python and when was it released?"
-        st.session_state["trigger_chat"] = True
+        st.session_state["trigger_chat"] = "Who created Python and when was it released?"
 
 
 # Hugging Face token input
@@ -141,15 +138,12 @@ for q, a in st.session_state.chat_history:
     with st.chat_message("assistant"):
         st.write(a)
 
-# Determine the prompt: either typed input or button click
-prompt = None
-if st.session_state.get("trigger_chat", False):
-    prompt = st.session_state["user_input"]
-    st.session_state["trigger_chat"] = False  # reset trigger
-elif user_input := st.chat_input("Ask me something..."):
-    prompt = user_input
+# Always show chat input
+user_input = st.chat_input("Ask me something...")
 
-# Process the prompt if we have one
+# Determine prompt: button click or typed input
+prompt = st.session_state.pop("trigger_chat", None) or user_input
+
 if prompt:
     if not hf_token:
         st.warning("Please enter your HuggingFace token above first.")
