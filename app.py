@@ -11,107 +11,29 @@ HF_API_KEY = st.secrets["HF_API_KEY"]
 # ======== Sample Training Documents ========
 enhanced_sample_texts = {
     "space_missions.txt": """
-    The Apollo 11 mission was the first successful attempt to land humans on the Moon. 
-    It was launched on July 16, 1969, from Kennedy Space Center in Florida, atop a Saturn V rocket. 
-    The spacecraft consisted of three main parts: the Command Module "Columbia," piloted by Michael Collins; 
-    the Lunar Module "Eagle," which carried Neil Armstrong and Buzz Aldrin to the Moon’s surface; 
-    and the Service Module, which supported the Command Module. 
-
-    On July 20, 1969, at 20:17 UTC, the Lunar Module Eagle landed in the Sea of Tranquility. 
-    Neil Armstrong became the first human to set foot on the Moon, uttering the famous words 
-    "That’s one small step for man, one giant leap for mankind," followed by Buzz Aldrin soon after. 
-    Michael Collins remained in lunar orbit aboard Columbia, maintaining communications and preparing for return. 
-
-    The astronauts collected 47.5 pounds (21.5 kilograms) of lunar rock and soil samples, 
-    conducted scientific experiments including seismometers and solar wind detectors, 
-    and placed an American flag and a plaque that read: "We came in peace for all mankind." 
-    The mission lasted 8 days, 3 hours, 18 minutes, and 35 seconds, concluding with splashdown 
-    in the Pacific Ocean on July 24, 1969. The success of Apollo 11 fulfilled President John F. Kennedy’s 1961 
-    goal of "landing a man on the Moon and returning him safely to the Earth" before the decade’s end. 
+    The Apollo 11 mission launched on July 16, 1969, and landed the first humans on the Moon on July 20, 1969.
+    The crew consisted of exactly three astronauts: Neil Armstrong (Commander), Buzz Aldrin (Lunar Module Pilot),
+    and Michael Collins (Command Module Pilot). Neil Armstrong was the first person to walk on the Moon,
+    followed by Buzz Aldrin. Michael Collins remained in lunar orbit aboard the command module Columbia.
+    The mission lasted 8 days, 3 hours, 18 minutes, and 35 seconds. There was no fourth crew member on Apollo 11.
     """,
-
     "landmarks_architecture.txt": """
-    The Eiffel Tower is a wrought-iron lattice tower located on the Champ de Mars in Paris, France, 
-    along the Seine River. It was designed by engineer Gustave Eiffel and constructed between 1887 and 1889 
-    as the entrance arch to the 1889 Exposition Universelle (World’s Fair), which celebrated the centennial 
-    of the French Revolution. At 324 meters (1,063 feet) tall, it was the tallest man-made structure 
-    in the world until the completion of the Chrysler Building in New York City in 1930. 
-
-    Originally criticized by artists and intellectuals in France for its radical design, 
-    the Eiffel Tower eventually became a global cultural icon and one of the most visited paid monuments 
-    in the world. The tower consists of three accessible levels: restaurants and shops on the first and second levels, 
-    and an observation deck on the third level that offers panoramic views of Paris. 
-
-    Constructed from over 18,000 iron parts joined by 2.5 million rivets, 
-    the Eiffel Tower weighs approximately 10,100 tons. It requires regular repainting (every 7 years) 
-    to prevent corrosion. It is illuminated nightly by 20,000 light bulbs, 
-    making it one of the most recognizable symbols of France and modern engineering. 
+    The Eiffel Tower is a wrought-iron lattice tower located on the Champ de Mars in Paris, France.
+    Construction began in 1887 and was completed in 1889 for the 1889 World's Fair.
     """,
-
     "programming_technologies.txt": """
-    Python is a high-level, interpreted programming language created by Guido van Rossum in 1989 
-    and first released in 1991. Its design emphasizes readability, simplicity, and efficiency, 
-    famously using significant whitespace (indentation) rather than braces or keywords 
-    to define code blocks. Python supports multiple programming paradigms including 
-    object-oriented, functional, and procedural programming. 
-
-    The language has an extensive standard library, often described as having 
-    "batteries included," which provides modules for tasks such as file I/O, networking, 
-    mathematics, and web services. Python is widely used in data science, machine learning, 
-    artificial intelligence, scientific computing, web development, and automation. 
-    Its ecosystem includes major libraries like NumPy, pandas, TensorFlow, PyTorch, Django, and Flask. 
-
-    Python is currently maintained by the Python Software Foundation. 
-    There are two main versions: Python 2 (now deprecated) and Python 3, 
-    which introduced improvements such as Unicode support and better syntax consistency. 
-    Python’s popularity has grown rapidly, making it one of the most widely taught 
-    programming languages in universities and one of the top languages used in industry. 
+    Python was created by Guido van Rossum and first released in 1991.
+    It emphasizes code readability with its notable use of significant whitespace.
     """,
-
     "science_discoveries.txt": """
-    Penicillin, the world’s first widely used antibiotic, was discovered in 1928 by Scottish scientist Alexander Fleming. 
-    While working at St. Mary’s Hospital in London, Fleming observed that a mold called Penicillium notatum 
-    had contaminated one of his Petri dishes and killed the surrounding colonies of Staphylococcus bacteria. 
-    This accidental discovery revealed that the mold produced a substance with powerful antibacterial properties. 
-
-    Although Fleming published his findings in 1929, it took over a decade before penicillin was developed 
-    into a usable medical treatment. In the early 1940s, a team of scientists including Howard Florey, Ernst Boris Chain, 
-    and Norman Heatley at Oxford University succeeded in mass-producing penicillin, 
-    supported by large-scale industrial efforts in the United States during World War II. 
-
-    Penicillin revolutionized medicine by providing a reliable treatment for bacterial infections such as pneumonia, 
-    syphilis, gonorrhea, scarlet fever, and wound infections. It saved countless lives during WWII, 
-    dramatically reducing deaths from infected wounds among soldiers. The discovery of penicillin 
-    marked the beginning of the modern antibiotic era, although overuse in subsequent decades 
-    has contributed to antibiotic resistance, one of today’s major public health challenges. 
+    Penicillin was discovered by Alexander Fleming in 1928 when he noticed that a mold had killed bacteria in his lab.
     """,
-
     "historical_events.txt": """
-    World War II was a global conflict lasting from September 1, 1939, to September 2, 1945, 
-    involving more than 100 million people from over 30 countries. It began when Germany, 
-    under Adolf Hitler, invaded Poland, prompting Britain and France to declare war. 
-    The major Allied powers included the United States, the Soviet Union, the United Kingdom, and China, 
-    while the main Axis powers were Germany, Italy, and Japan. 
-
-    The war was fought across Europe, Africa, Asia, and the Pacific. Key events included the Battle of Britain (1940), 
-    the German invasion of the Soviet Union (1941), the Japanese attack on Pearl Harbor (1941), 
-    the Allied invasion of Normandy (D-Day, June 6, 1944), and the liberation of Nazi concentration camps. 
-    The Holocaust, in which approximately six million Jews and millions of others including Poles, Romani, 
-    disabled individuals, and political prisoners were murdered, remains one of history’s most tragic atrocities. 
-
-    World War II ended in Europe with Germany’s unconditional surrender on May 8, 1945 (V-E Day). 
-    The war concluded globally after the United States dropped atomic bombs on Hiroshima (August 6, 1945) 
-    and Nagasaki (August 9, 1945), forcing Japan’s surrender on August 15, 1945, 
-    which was formally signed on September 2, 1945, aboard the USS Missouri. 
-
-    The aftermath of World War II reshaped the global order: 
-    the United Nations was founded in 1945 to promote peace and security, 
-    the Cold War emerged between the U.S. and the Soviet Union, 
-    and many nations in Asia and Africa began movements toward decolonization. 
-    The war caused an estimated 70–85 million deaths, making it the deadliest conflict in human history. 
+    World War II lasted from 1939 to 1945 and involved most of the world's nations.
+    The war ended with the surrender of Germany on May 8, 1945 (Victory in Europe Day)
+    and Japan on August 15, 1945, following the atomic bombings of Hiroshima and Nagasaki.
     """
 }
-
 
 # ======== Prepare FAISS Index ========
 embedder = SentenceTransformer("all-MiniLM-L6-v2")
