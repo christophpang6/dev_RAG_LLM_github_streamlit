@@ -65,12 +65,13 @@ st.title("🤖 Multi-Turn RAG Chatbot Demo")
 st.markdown("Creator: **Christopher Pang**  🔗 [LinkedIn](https://www.linkedin.com/in/christopherpang)")
 
 st.markdown(
-    "This demo shows a Retrieval-Augmented Generation chatbot that pulls from X documents and uses embeddings + LLM to answer domain-specific questions. "
-    "Ask questions about **space missions, landmarks, programming, science, or historical events.** "
-    "If a question is asked that is not in the retrieval vector database, the chatbot will respond with: **\"I don't know.\"**"
+    "This demo shows a Retrieval-Augmented Generation chatbot that pulls from X documents and uses embeddings + LLM to answer domain-specific questions.<br>"
+    "Ask questions about **space missions, landmarks, programming, science, or historical events.**<br>"
+    "If a question is asked that is not in the retrieval vector database, the chatbot will respond with: **\"I don't know.\"**",
+    unsafe_allow_html=True
 )
 
-st.markdown("###Try clicking on one of these:")
+st.markdown("### Try clicking on one of these:")
 
 col1, col2, col3 = st.columns(3)
 with col1:
