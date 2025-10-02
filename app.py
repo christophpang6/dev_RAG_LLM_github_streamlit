@@ -119,9 +119,9 @@ def rag_respond(message, hf_token, history, system_message, max_tokens, temperat
     # functionality. 
     # however when switching topics, will have irrelevant retrieval chunks from previous topic relative
     # to the new topic and the LLM will then say I don't know.
-    # can instead use history[-2:] to use less of the past chat_history while maintaining
+    # can instead use history[-1:] to use less of the past chat_history while maintaining
     # multi turn follow up questions feature
-    retrieval_query = " ".join([f"{q} {a}" for q, a in history[-2:]] + [message])
+    retrieval_query = " ".join([f"{q} {a}" for q, a in history[-1:]] + [message])
     q_emb = embedder.encode([retrieval_query], convert_to_numpy=True)
     D, I = index.search(q_emb, k=5)
     retrieved_chunks = [(corpus[i], sources[i], D[0][j]) for j, i in enumerate(I[0])]
