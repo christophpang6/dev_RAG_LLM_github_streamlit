@@ -60,6 +60,10 @@ SYSTEM_MESSAGE = (
 # ======== Streamlit UI Config ========
 st.set_page_config(page_title="RAG Chatbot", page_icon="🤖", layout="centered")
 st.title("🤖 Multi-Turn RAG Chatbot Demo")
+
+# Creator / author info at the top
+st.markdown("Creator: **Christopher Pang**  🔗 [LinkedIn](https://www.linkedin.com/in/christopherpang)")
+
 st.markdown("This demo shows a Retrieval-Augmented Generation chatbot that pulls from X documents and uses embeddings + LLM to answer domain-specific questions.")
 st.markdown("Ask questions about **space missions, landmarks, programming, science, or historical events.**")
 
@@ -86,6 +90,11 @@ hf_token = HF_API_KEY
 # max_tokens = st.slider("Max new tokens", min_value=1, max_value=2048, value=512, step=1)
 # temperature = st.slider("Temperature", min_value=0.0, max_value=2.0, value=0.0, step=0.1)
 # top_p = st.slider("Top-p (nucleus sampling)", min_value=0.1, max_value=1.0, value=0.95, step=0.05)
+
+# set these so it is simpler for someone to use
+max_tokens = 512
+temperature = 0.0
+top_p = 0.95
 
 # Initialize chat history in Streamlit session state
 if "chat_history" not in st.session_state:
