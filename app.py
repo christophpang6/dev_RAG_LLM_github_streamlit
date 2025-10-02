@@ -58,10 +58,9 @@ SYSTEM_MESSAGE = (
 )
 
 # ======== Streamlit UI Config ========
-st.set_page_config(page_title="RAG Chatbot", page_icon="🤖", layout="centered")
+st.set_page_config(page_title="Chris RAG Chatbot", page_icon="🤖", layout="centered")
 st.title("🤖 Multi-Turn RAG Chatbot Demo")
 
-# Creator / author info at the top
 st.markdown("Creator: **Christopher Pang**  🔗 [LinkedIn](https://www.linkedin.com/in/christopherpang)")
 
 st.markdown(
